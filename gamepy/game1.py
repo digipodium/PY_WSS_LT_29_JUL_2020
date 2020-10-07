@@ -1,11 +1,11 @@
 # pip install pgzero
-# pgzrun intro_to_pgzero.py
+# pgzrun game1.py
 
 hero = Actor('gameboy')
 hero.topright = 0,10
 
-HEIGHT = 500
-WIDTH = 1500
+HEIGHT = 300
+WIDTH = 300
 
 def draw():
     screen.clear()
