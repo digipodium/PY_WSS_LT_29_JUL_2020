@@ -1,6 +1,4 @@
-# pip install pgzero
-# pgzrun game1.py
-
+import pgzrun 
 hero = Actor('gameboy')
 hero.topright = 0,10
 
@@ -25,3 +23,5 @@ def on_mouse_down(pos):
 
 def set_hero_normal():
     hero.image = 'gameboy'
+
+pgzrun.go()
