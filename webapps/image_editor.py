@@ -1,5 +1,5 @@
 import streamlit as st
-from PIL import Image, ImageFilter
+from PIL import Image
 
 editing_options = ['resize','transpose','convert']
 allowed_files = ['jpg','png','bmp','jpeg']
@@ -8,10 +8,10 @@ allowed_files = ['jpg','png','bmp','jpeg']
 st.sidebar.title('Image Editor')
 file = st.file_uploader("Upload an image here", type=allowed_files)
 choice = st.sidebar.selectbox('select an editing option',options=editing_options)
-
+img_box = st.empty()
 # logic
 if file:
-    st.image(file.read(),use_column_width=True) # take file, read the bytes
+    img_box.image(file.read(),use_column_width=True) # take file, read the bytes
     img = Image.open(file)
     size = img.size
     mode = img.mode
@@ -30,7 +30,7 @@ if file:
         y = st.sidebar.number_input('Height',64,2000,value=img.height)
         if st.sidebar.button("resize image"):
             rsz_img = img.resize((x,y))
-            st.image(rsz_img,use_column_width=True,caption='resized image')
+            img_box.image(rsz_img,caption='resized image')
     elif choice == 'transpose':
         pass
     elif choice == 'convert':
